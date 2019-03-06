@@ -11,6 +11,8 @@ from collections import defaultdict
 bot = Bot(console_qr = 2)
 bot.enable_puid()
 
+tuling = Tuling(api_key='fec1dbaad9ea4c6b8799069c163c63e1')
+
 admin_group = bot.groups().search('重要意见群')
 member_fouls = defaultdict(int)
 
@@ -48,6 +50,14 @@ def detect_ads(msg):
 	if re.search('好文章', msg.text, re.IGNORECASE) and (msg.member in member_fouls.keys()) and member_fouls[msg.member] > 0 and msg.is_at:
 		member_fouls[msg.member] = 0
 		msg.reply('好，那是我错怪你了，[愉快]')
-		print (member_fouls)		
+		print (member_fouls)
+
+	if msg.is_at:
+		if re.search('好文章', msg.text, re.IGNORECASE) and (msg.member in member_fouls.keys()) and member_fouls[msg.member] > 0:
+			member_fouls[msg.member] = 0
+			msg.reply('好，那是我错怪你了，[愉快]')
+			print (member_fouls)
+		else:
+			tuling.do_reply(msg)
                 
 embed()
