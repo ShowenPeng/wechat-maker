@@ -39,7 +39,7 @@ def detect_msg(msg):
 			content = re.sub('@[^\s]*', '', unicodedata.normalize('NFKC', raw_content)).strip()
 			print(content)
 			if (not re.search('Maker|MakerDAO|稳定币|加密经济|潘超|Dai|开发者',title, re.IGNORECASE)) \
-			and (not re.search('Maker|MakerDAO|稳定币|加密经济|潘超|央行|Ethfans',content, re.IGNORECASE)):
+			and (not re.search('Maker|MakerDAO|稳定币|加密经济|潘超|央行|Ethfans|Hydro',content, re.IGNORECASE)):
 				print (member_fouls)
 				member_fouls[msg.member] += 1
 				print (member_fouls)
