@@ -23,7 +23,7 @@ member_fouls = defaultdict(int)
 
 @bot.register(admin_group, except_self = True)
 
-def detect_ads(msg):
+def detect_msg(msg):
 	current_group = msg.chat
 	print (current_group)
 	print (msg.text)
