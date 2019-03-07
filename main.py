@@ -21,46 +21,6 @@ client = Client(transport=transport)
 admin_group = bot.groups().search('重要意见群')
 member_fouls = defaultdict(int)
 
-# @bot.register(admin_group, except_self = True)
-
-# def cdp_alert(msg):
-# 	current_group = msg.chat
-# 	text = msg.text
-# 	pattern = r"cdp(:|\s+)?(?P<id>\d+)"
-# 	match = re.search(pattern, text,re.IGNORECASE)
-# 	print (text)
-# 	print (match.group(0))
-# 	if msg.is_at and match:
-# 		cdp_id = match.group('id')
-# 		query = gql('''
-# 		{
-# 		  getCup(id: %s){
-# 		  	pip
-# 		    id
-# 		    art
-# 		    ratio
-# 		  }
-# 		}
-# 		''' % (cdp_id))
-# 		variables = {'cdp_id': cdp_id}
-# 		result = client.execute(query)['getCup']
-# 		if result:
-# 			this_id = result['id']
-# 			amount = round(float(result['art']),2)
-# 			ratio = round(float(result["ratio"]),2) if len(result["ratio"]) >= 1 else 0
-# 			li_price = None if ratio == 0 else round(float(result['pip'])/(ratio/150),2)
-# 			spot_price = float(result['pip'])
-# 			if 0 <= ratio <  160:
-# 				status = "危险,[惊恐]"
-# 			elif 160 <= ratio < 180:
-# 				status = "风险,[发呆]"
-# 			elif ratio >= 180:
-# 				status = "安全,[]"
-# 			else:
-# 				status = "已关闭"
-# 			cdp_response = "CDP:{id}\n状态:{status}\nDai款:{amt}\n清算价格:{li_price}\n实时价格:{spot_price}\n抵押率:{ratio}%".format(id=this_id, status=status,amt=amount,li_price=li_price,spot_price=spot_price,ratio=ratio)
-# 			msg.reply(cdp_response)
-
 @bot.register(admin_group, except_self = True)
 
 def detect_ads(msg):
